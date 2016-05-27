@@ -1,1 +1,1 @@
-fpm --after-install rpm_files/conf_initd.sh --after-remove rpm_files/rm_initd.sh -f -s dir -t rpm -n monitor_client -v 1.0.0 --prefix /opt/monitor_client Gemfile Gemfile.lock lib/ monitor_client.rb rpm_files/monitor_client_server
+fpm --after-install rpm_files/conf_initd.sh --after-remove rpm_files/rm_initd.sh -f -s dir -t rpm -n monitor_client -v 1.0.0 -d ruby23 --prefix /opt/monitor_client Gemfile Gemfile.lock lib/ monitor_client.rb vendor .bundle
