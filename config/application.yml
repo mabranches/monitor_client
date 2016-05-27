@@ -1,0 +1,3 @@
+api_base: 'http://monitor-api-env.r7n5xpah3m.us-west-2.elasticbeanstalk.com/'
+seconds: 1 #600
+
