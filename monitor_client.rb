@@ -1,31 +1,30 @@
-require 'lib/config'
-require 'lib/hd_collector'
-require 'lib/mem_collector'
-require 'lib/cpu_collector'
+require 'rest-client'
+require 'byebug'
+require './lib/config.rb'
+require './lib/collector.rb'
+Dir["./lib/collectors/*.rb"].each {|file| require file }
+require './lib/client.rb'
 
-config = Config.new(config_path)
-client = config.get_client_instance
+config = Config.new
+client = Client.new(config)
 collectors = []
-collectors << HdCollector.new
+collectors << DiskCollector.new
 collectors << MemCollector.new
 collectors << CPUCollector.new
 
-#remove the \n char from localhost
-usage = {name: `localhost`[0..-3]}
+usage = {name: config.instance_id}
 
 while true do
 
   sleep(config.seconds)
   collectors.each do |collector|
-    if error = collector.collect
-      usage[collector.type] = collector.usage
-    else
-      log.error(collector.error)
-    end
+    collector.collect
+    usage[collector.type] = collector.usage || 0
   end
-  client_status = client.send_usage(usage) unless_error 
-  
-  error = false
+  byebug
+  if (!client.send_usage(usage))
+    log.error("Could not send usage status to api. #{collector.error}")
+  end
     
 end
 
