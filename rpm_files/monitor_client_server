@@ -28,15 +28,16 @@
 # Source networking configuration.
 . /etc/sysconfig/network
 
-prog=monitor_client
-comm="cd /opt/monitor_client/; ruby monitor_client.rb"
+prog=monitor
+PATH=/home/ec2-user/.gem/ruby/2.3.0/bin:/opt/rubies/ruby-2.3.0/lib/ruby/gems/2.3.0/bin:/opt/rubies/ruby-2.3.0/bin:$PATH
+PATH=/opt/monitor_client:$PATH
 lockfile=/var/lock/subsys/$prog
 
 start() {
 
 	# Start daemon.
 	echo -n $"Starting $prog: "
-	daemon $comm
+	daemon $prog
 	RETVAL=$?
 	echo
 	[ $RETVAL -eq 0 ] && touch $lockfile
