@@ -1,3 +1,4 @@
-api_base: 'http://monitor-api-env.r7n5xpah3m.us-west-2.elasticbeanstalk.com/'
+#api_base: 'http://localhost:3000/'
+api_base: 'http://monitor-api-env.r7n5xpah3m.us-west-2.elasticbeanstalk.com/prod/'
 seconds: 1 #600
 

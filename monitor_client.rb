@@ -21,7 +21,7 @@ while true do
     collector.collect
     usage[collector.type] = collector.usage || 0
   end
-  byebug
+  
   if (!client.send_usage(usage))
     log.error("Could not send usage status to api. #{collector.error}")
   end
