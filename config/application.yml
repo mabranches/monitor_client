@@ -1,4 +1,4 @@
 #api_base: 'http://localhost:3000/'
-api_base: 'http://monitor-api-env.r7n5xpah3m.us-west-2.elasticbeanstalk.com/prod/'
+api_base: "https://r91t8rksue.execute-api.us-west-2.amazonaws.com/prod/"
 seconds: 1 #600
 
