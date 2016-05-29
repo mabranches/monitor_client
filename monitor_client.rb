@@ -1,5 +1,4 @@
 require 'rest-client'
-require 'byebug'
 require './lib/config.rb'
 require './lib/collector.rb'
 Dir["./lib/collectors/*.rb"].each {|file| require file }
@@ -12,7 +11,7 @@ collectors << DiskCollector.new
 collectors << MemCollector.new
 collectors << CPUCollector.new
 
-usage = {name: config.instance_id}
+usage = {instance_id: config.instance_id}
 
 while true do
 
@@ -21,7 +20,7 @@ while true do
     collector.collect
     usage[collector.type] = collector.usage || 0
   end
-  
+ 
   if (!client.send_usage(usage))
     log.error("Could not send usage status to api. #{collector.error}")
   end
