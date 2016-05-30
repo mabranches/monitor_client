@@ -1,16 +1,17 @@
 class Collector
   attr_reader :usage, :error
-  def initialize
+  def initialize(log)
+    @log = log
     @error = nil
     @usage = nil
   end
-  
+
   def collect
     @error = nil
-      @usage = execute 
-    rescue => e
+    @usage = execute
+    rescue Exception => e
       @error = e.message
-      puts e.message
-      #log errror
+      @log.error(e.message)
+      raise e
   end
 end
