@@ -8,7 +8,7 @@ class Collector
   def collect
     @error = nil
       @usage = execute 
-    rescue Exception => e
+    rescue => e
       @error = e.message
       puts e.message
       #log errror
