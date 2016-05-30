@@ -10,6 +10,7 @@ collectors = []
 collectors << DiskCollector.new
 collectors << MemCollector.new
 collectors << CPUCollector.new
+collectors << ProcessCollector.new
 
 usage = {instance_id: config.instance_id}
 
