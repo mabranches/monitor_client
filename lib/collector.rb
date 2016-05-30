@@ -9,9 +9,5 @@ class Collector
   def collect
     @error = nil
     @usage = execute
-    rescue Exception => e
-      @error = e.message
-      @log.error(e.message)
-      raise e
   end
 end
