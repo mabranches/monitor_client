@@ -10,6 +10,7 @@ class Collector
       @usage = execute 
     rescue Exception => e
       @error = e.message
+      puts e.message
       #log errror
   end
 end
