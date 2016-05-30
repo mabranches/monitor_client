@@ -1,4 +1,5 @@
 #api_base: 'http://localhost:3000/'
 api_base: "https://r91t8rksue.execute-api.us-west-2.amazonaws.com/prod/"
+log_path: 'log/monitor.log'
 seconds: 1 #600
 
