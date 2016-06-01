@@ -18,7 +18,7 @@ class RunnerBlock
 
   def self.run_block(config, collectors, log)
     client = Client.new(config)
-    usage = {instance_id: config.instance_id}
+    usage = {}
     sleep(config.seconds)
       collectors.each do |collector|
         begin
