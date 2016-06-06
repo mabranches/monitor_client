@@ -12,6 +12,7 @@ describe Collector  do
       expect(log).not_to receive(:error)
       collector = Collector.new(log)
       allow(collector).to receive(:execute) {}
+      allow(collector).to receive(:type) {'type'}
       expect{collector.execute}.not_to raise_error
     end
   end
