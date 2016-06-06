@@ -25,14 +25,12 @@ class RunnerBlock
           collector.collect
           usage[collector.type] = collector.usage
         rescue => e
-          puts "Could not collect with #{collector.class.name}. #{e.message}"
           log.error("Could not collect with #{collector.class.name}. #{e.message}")
         end
       end
       begin
         client.send_usage(usage)
       rescue => e
-        puts "Could not send usage status to api. #{e.message}"
         log.error("Could not send usage status to api. #{e.message}")
       end
   end
